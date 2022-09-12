@@ -12,7 +12,7 @@ $servername = "localhost";
 $username = "username";
 $password = "password";
 
-// Create connection
+// Create connection 
 $conn = new mysqli($servername, $username, $password);
 
 // Check connection
