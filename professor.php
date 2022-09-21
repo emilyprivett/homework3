@@ -48,6 +48,27 @@ if ($conn->connect_error) {
 </nav>
     <h1 style="text-align:center;">Professors</h1>
 
+    $sql = "SELECT * from professor";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+?>
+  <tr>
+    <td><?=$row["professorid"]?></td>
+    <td><?=$row["professorfirstname"]?></td>
+    <td><?=$row["professorlastname"]?></td>
+    <td><?=$row["email"]?></td>
+  </tr>
+<?php
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
