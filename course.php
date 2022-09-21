@@ -7,20 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
-<?php
-$servername = "localhost";
-$username = "emilypri_homework3";
-$password = "h0mework_3";
-$dbname = "emilypri_firstdatabase";
- 
-// Create connection 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Homework 3</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +32,52 @@ if ($conn->connect_error) {
     </ul>
   </div>
 </nav>
-    <h1 style="text-align:center;">Courses</h1>
+   <h1 style="text-align:center;">Courses</h1>
+
+<?php
+$servername = "localhost";
+$username = "emilypri_homework3";
+$password = "h0mework_3";
+$dbname = "emilypri_firstdatabase";
+ 
+// Create connection 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$sql = "SELECT * from Course";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+?>
+
+    <table class="table table-success">
+  <thead>
+    <tr>
+      <th>Course ID</th>
+      <th>Course Name</th>
+      <th>Professor ID</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><?=$row["CourseID"]?></td>
+    <td><?=$row["CourseName"]?></td>
+    <td><?=$row["ProfessorID"]?></td>
+  </tr>
+<?php
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+  </tbody>
+    </table>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>

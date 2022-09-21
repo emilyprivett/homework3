@@ -58,7 +58,7 @@ if ($result->num_rows > 0) {
     <table class="table table-info">
   <thead>
     <tr>
-      <th>ID</th>
+      <th>Professor ID</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email Name</th>
