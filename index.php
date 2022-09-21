@@ -11,7 +11,7 @@
 $servername = "localhost";
 $username = "emilypri_homework3";
 $password = "h0mework_3";
-$dbname ="emilypriv_firstdatabase";
+$dbname ="emilypri_firstdatabase";
 
 // Create connection 
 $conn = new mysqli($servername, $username, $password, $dbname);
