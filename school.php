@@ -29,7 +29,7 @@ if ($conn->connect_error) {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php">Home</a>
       </li>
             <li class="nav-item">
         <a class="nav-link" href="professor.php">Professors</a>
@@ -46,7 +46,7 @@ if ($conn->connect_error) {
     </ul>
   </div>
 </nav>
-    <h1 style="align-content:center;">Schools</h1>
+    <h1 style="text-align:center;">Schools</h1>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
