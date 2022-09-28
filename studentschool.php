@@ -79,7 +79,7 @@ if ($result->num_rows > 0) {
       <h5 class="card-title"><?=$row["SchoolName"]?></h5>
       <p class="card-text"><ul>
 <?php
-    $section_sql = "SELECT SchoolName, StudentFirstName, StudentLastName FROM Student st JOIN School sc ON st.SchoolID=sl.SchoolID" . $row["SchoolName"];
+    $section_sql = "SELECT sc.SchoolID, SchoolName, StudentFirstName, StudentLastName FROM Student st JOIN School sc ON st.SchoolID=sl.SchoolID";
     $section_result = $conn->query($section_sql);
     
     while($section_row = $section_result->fetch_assoc()) {
