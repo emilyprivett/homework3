@@ -53,7 +53,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $sid = $_POST['id'];
-$sql = ""SELECT StudentFirstName, StudentLastName, CourseName FROM Student s JOIN Course c ON st.SchoolID=sc.SchoolID" . $sid;
+$sql = ""SELECT StudentFirstName, StudentLastName, CourseName FROM Student s JOIN Course c ON s..SchoolID=sc.SchoolID" . $sid; //fix this
 //echo $sql;
     $result = $conn->query($sql);
 
