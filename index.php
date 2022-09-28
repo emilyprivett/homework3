@@ -46,6 +46,9 @@ if ($conn->connect_error) {
                   <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
+             <li class="nav-item">
+        <a class="nav-link" href="studentcourse.php">Student & Course</a>
+      </li>
     </ul>
   </div>
 </nav>

@@ -7,20 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
-<?php
-$servername = "localhost";
-$username = "emilypri_homework3";
-$password = "h0mework_3";
-$dbname = "emilypri_firstdatabase";
- 
-// Create connection 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Homework 3</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,52 +29,51 @@ if ($conn->connect_error) {
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
-            <li class="nav-item">
+         <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
-             <li class="nav-item">
+       <li class="nav-item">
         <a class="nav-link" href="studentcourse.php">Student & Course</a>
       </li>
     </ul>
   </div>
 </nav>
-    <h1 style="text-align:center;">Student's Schools!</h1>
- <div class="card-group">
-    <?php
+    <h1 style="text-align:center;">Student Courses</h1>
+<?php
 $servername = "localhost";
 $username = "emilypri_homework3";
 $password = "h0mework_3";
 $dbname = "emilypri_firstdatabase";
-
-// Create connection
+ 
+// Create connection 
 $conn = new mysqli($servername, $username, $password, $dbname);
+
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT SchoolID, SchoolName from School";
+$sql = "SELECT StudentFirstName, StudentLastName, CourseName FROM Student s JOIN Course c ON st.SchoolID=sc.SchoolID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
-   <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"><?=$row["SchoolName"]?></h5>
-      <p class="card-text"><ul>
-<?php
-    $section_sql = "SELECT SchoolName, StudentFirstName, StudentLastName FROM Student st JOIN School sc ON st.SchoolID=sl.SchoolID" . $row["SchoolName"];
-    $section_result = $conn->query($section_sql);
-    
-    while($section_row = $section_result->fetch_assoc()) {
-      echo "<li>" . $section_row["description"] . "</li>";
-    }
-?>
-      </ul></p>
-  </div>
-    </div>
+
+    <table class="table table-primary">
+  <thead>
+    <tr>
+      <th>Student First Name</th>
+      <th>Student Last Name</th>
+      <th>Course Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><?=$row["StudentFirstName"]?></td>
+    <td><?=$row["StudentLastName"]?></td>
+    <td><?=$row["CourseName"]?></td>
+  </tr>
 <?php
   }
 } else {
@@ -96,7 +81,9 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-  </card-group>
+  </tbody>
+    </table>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
