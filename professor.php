@@ -29,6 +29,9 @@
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
+                  <li class="nav-item">
+        <a class="nav-link" href="studentschool.php">Student & School</a>
+      </li>
     </ul>
   </div>
 </nav>

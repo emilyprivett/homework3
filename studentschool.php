@@ -7,6 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
+<?php
+$servername = "localhost";
+$username = "emilypri_homework3";
+$password = "h0mework_3";
+$dbname = "emilypri_firstdatabase";
+ 
+// Create connection 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Homework 3</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +49,8 @@
     </ul>
   </div>
 </nav>
-<h1 style="text-align:center;">Schools</h1>
-
-<?php
+    <h1 style="text-align:center;">Student's Schools!'</h1>
+    <?php
 $servername = "localhost";
 $username = "emilypri_homework3";
 $password = "h0mework_3";
@@ -50,7 +63,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * from School";
+$sql = "SELECT StudentFirstName, StudentLastName, SchoolName FROM Student st JOIN School sc ON st.SchoolID=sc.SchoolID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -58,21 +71,19 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 ?>
 
-    <table class="table table-danger">
+    <table class="table table-primary">
   <thead>
     <tr>
-      <th>School ID</th>
+      <th>Student First Name</th>
+      <th>Student Last Name</th>
       <th>School Name</th>
-      <th>State</th>
-      <th>City</th>
     </tr>
   </thead>
   <tbody>
   <tr>
-    <td><?=$row["SchoolID"]?></td>
+    <td><?=$row["StudentFirstName"]?></td>
+    <td><?=$row["StudentLastName"]?></td>
     <td><?=$row["SchoolName"]?></td>
-    <td><?=$row["State"]?></td>
-    <td><?=$row["City"]?></td>
   </tr>
 <?php
   }
