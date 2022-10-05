@@ -39,6 +39,15 @@
   </div>
 </nav>
     <h1 style="text-align:center;">Student Courses</h1>
+    <table class="table table-primary">
+  <thead>
+    <tr>
+      <th>Student First Name</th>
+      <th>Student Last Name</th>
+      <th>Course Name</th>
+    </tr>
+  </thead>
+  <tbody>
 <?php
 $servername = "localhost";
 $username = "emilypri_homework3";
@@ -60,17 +69,7 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
-
-    <table class="table table-primary">
-  <thead>
-    <tr>
-      <th>Student First Name</th>
-      <th>Student Last Name</th>
-      <th>Course Name</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
+   <tr>
     <td><?=$row["StudentFirstName"]?></td>
     <td><?=$row["StudentLastName"]?></td>
     <td><?=$row["CourseName"]?></td>
@@ -83,7 +82,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
   </tbody>
-    </table>
+   </table>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
