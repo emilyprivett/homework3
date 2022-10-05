@@ -53,7 +53,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT DISTINCT SchoolID, SchoolName FROM School";
+$sql = "SELECT SchoolID, SchoolName FROM School";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
       <h5 class="card-title"><?=$row["SchoolName"]?></h5>
       <p class="card-text"><ul>
 <?php
-    $section_sql = "SELECT DISTINCT SchoolName, StudentFirstName, StudentLastName FROM Student st JOIN School sc ON st.SchoolID=sl.SchoolID WHERE st.SchoolID=" . $row["SchoolID"];
+    $section_sql = "SELECT SchoolName, StudentFirstName FROM Student st JOIN School sc ON st.SchoolID=sl.SchoolID WHERE st.SchoolID=" . $row["SchoolID"];
     $section_result = $conn->query($section_sql);
     
     while($section_row = $section_result->fetch_assoc()) {
