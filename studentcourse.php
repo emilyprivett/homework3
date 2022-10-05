@@ -62,7 +62,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $cid = $_POST['id'];
-$sql = "SELECT  CourseName, StudentFirstName, StudentLastName FROM Course c JOIN StudentCourse sc ON c.CourseID=sc.CourseID JOIN Student s ON sc.StudentID=s.StudentID WHERE c.CourseID=" . $cid;
+$sql = "SELECT CourseName, StudentFirstName, StudentLastName FROM Course c JOIN StudentCourse sc ON c.CourseID=sc.CourseID JOIN Student s ON sc.StudentID=s.StudentID WHERE c.CourseID=" . $cid;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
