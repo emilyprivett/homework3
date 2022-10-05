@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
   <tbody>
   <tr>
     <td><?=$row["SchoolID"]?></td>
-    <td><a href="student-school.php?id=<?=$row["SchoolName"]?>"></a></td>
+    <td><a href="student-school.php?id=<?=$row["SchoolID"]?>"><?=$row["SchoolName"]?></a></td>
     <td><?=$row["State"]?></td>
     <td><?=$row["City"]?></td>
   </tr>
