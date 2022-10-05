@@ -70,7 +70,7 @@ if ($result->num_rows > 0) {
 ?>
    <tr>
     <td><?=$row["CourseName"]?></td>
-    <td><?=$row["Course ID"]?></td>
+    <td><?=$row["CourseID"]?></td>
   </tr>
 <?php
   }
