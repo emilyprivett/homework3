@@ -76,6 +76,12 @@ if ($result->num_rows > 0) {
     <td><?=$row["ProfessorFirstName"]?></td>
     <td><?=$row["ProfessorLastName"]?></td>
     <td><?=$row["Email"]?></td>
+    <td>
+      <form method="post" action="professorcourse.php">
+        <input type="hidden" name="id" value="<?=$row["ProfessorID"]?>" />
+        <input type="submit" value="Courses" />
+      </form>
+    </td>
   </tr>
 <?php
   }
