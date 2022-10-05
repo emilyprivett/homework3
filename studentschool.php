@@ -79,7 +79,7 @@ if ($result->num_rows > 0) {
       <h5 class="card-title"><?=$row["SchoolName"]?></h5>
       <p class="card-text"><ul>
 <?php
-    $section_sql = "SELECT DISTINCT SchoolName, StudentFirstName, StudentLastName FROM Student st JOIN School sc ON st.SchoolID=sl.SchoolID WHERE st.SchoolID=" .$row["SchoolID"];
+    $section_sql = "SELECT DISTINCT SchoolName, StudentFirstName, StudentLastName FROM Student st JOIN School sc ON st.SchoolID=sl.SchoolID WHERE st.SchoolID=" . $row["SchoolID"];
     $section_result = $conn->query($section_sql);
     
     while($section_row = $section_result->fetch_assoc()) {
@@ -97,6 +97,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
   </card-group>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
