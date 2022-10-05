@@ -29,52 +29,51 @@
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
-            <li class="nav-item">
+         <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
-             <li class="nav-item">
+       <li class="nav-item">
         <a class="nav-link" href="studentcourse.php">Student & Course</a>
       </li>
     </ul>
   </div>
 </nav>
-    <h1 style="text-align:center;">Professor's Courses'</h1>
- <div class="card-group">
-    <?php
+    <h1 style="text-align:center;">Student Courses</h1>
+    <table class="table table-primary">
+  <thead>
+    <tr>
+      <th>Student First Name</th>
+      <th>Student Last Name</th>
+      <th>Course Name</th>
+    </tr>
+  </thead>
+  <tbody>
+<?php
 $servername = "localhost";
 $username = "emilypri_homework3";
 $password = "h0mework_3";
 $dbname = "emilypri_firstdatabase";
-
-// Create connection
+ 
+// Create connection 
 $conn = new mysqli($servername, $username, $password, $dbname);
+
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT CourseID, CourseName FROM Course";
+$cid = $_POST['id'];
+$sql = "SELECT CourseName, ProfessorFirstName, ProfessorLastName FROM Course c JOIN Professor p ON c.ProfessorID=p.ProfessorID WHERE c.ProfessorID=" . $cid;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
-   <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"><?=$row["CourseName"]?></h5>
-      <p class="card-text"><ul>
-<?php
-    $section_sql = "SELECT ProfessorLastName FROM Professor p JOIN Course c ON p.ProfessorID=c.ProfessorID WHERE p.ProfessorID=" . $row["ProfessorID"];
-    $section_result = $conn->query($section_sql);
-    
-    while($section_row = $section_result->fetch_assoc()) {
-      echo "<li>" . $section_row["ProfessorLastName"] . "</li>";
-    }
-?>
-      </ul></p>
-  </div>
-    </div>
+   <tr>
+    <td><?=$row["CourseName"]?></td>
+    <td><?=$row["ProfessorFirstName"]?></td>
+    <td><?=$row["ProfessorLastName"]?></td>
+  </tr>
 <?php
   }
 } else {
@@ -82,8 +81,9 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-  </card-group>
+  </tbody>
+   </table>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
