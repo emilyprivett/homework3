@@ -29,53 +29,49 @@
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
-                  <li class="nav-item">
+         <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
-             <li class="nav-item">
+       <li class="nav-item">
         <a class="nav-link" href="professorcourse.php">Professor & Course</a>
       </li>
     </ul>
   </div>
 </nav>
-<h1 style="text-align:center;">Professors</h1>
-
-<?php
+    <h1 style="text-align:center;">Student Courses</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student ID</th>
+      <th>Student First Name</th>
+      <th>Student Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
 $servername = "localhost";
 $username = "emilypri_homework3";
 $password = "h0mework_3";
 $dbname = "emilypri_firstdatabase";
- 
-// Create connection 
-$conn = new mysqli($servername, $username, $password, $dbname);
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * from Professor";
-$result = $conn->query($sql);
+$pid = $_GET['id'];
+$sql = "SELECT StudentID, StudentFirstName, StudentLastName, SchoolID FROM Student st JOIN School sc ON st.SchoolID=sc.SchoolID WHERE st.SchoolID=" . $pid;
+    $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
-
-    <table class="table table-info">
-  <thead>
-    <tr>
-      <th>Professor ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email Name</th>
-    </tr>
-  </thead>
-  <tbody>
   <tr>
-    <td><?=$row["ProfessorID"]?></td>
-    <td><?=$row["ProfessorFirstName"]?></td>
-    <td><?=$row["ProfessorLastName"]?></td>
-    <td><?=$row["Email"]?></td>
+    <td><?=$row["StudentID"]?></td>
+    <td><?=$row["StudentFirstName"]?></td>
+    <td><?=$row["StudentLastName"]?></td>
   </tr>
 <?php
   }
@@ -86,7 +82,6 @@ $conn->close();
 ?>
   </tbody>
     </table>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>

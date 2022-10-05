@@ -33,7 +33,7 @@
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
              <li class="nav-item">
-        <a class="nav-link" href="studentcourse.php">Student & Course</a>
+        <a class="nav-link" href="professorcourse.php">Professor & Course</a>
       </li>
     </ul>
   </div>
@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
   <tbody>
   <tr>
     <td><?=$row["SchoolID"]?></td>
-    <td><?=$row["SchoolName"]?></td>
+    <td><a href="student-school.php?id=<?=$row["SchoolName"]?>"></a></td>
     <td><?=$row["State"]?></td>
     <td><?=$row["City"]?></td>
   </tr>

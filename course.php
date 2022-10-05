@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
   </thead>
   <tbody>
   <tr>
-    <td><?=$row["Course ID"]?></td>
+    <td><?=$row["CourseID"]?></td>
     <td><?=$row["CourseName"]?></td>
     <td><?=$row["ProfessorID"]?></td>
   </tr>
