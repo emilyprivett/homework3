@@ -38,12 +38,12 @@
     </ul>
   </div>
 </nav>
-    <h1 style="text-align:center;">Student Courses</h1>
+    <h1 style="text-align:center;">Professor Courses</h1>
     <table class="table table-primary">
   <thead>
     <tr>
-      <th>Student First Name</th>
-      <th>Student Last Name</th>
+      <th>Professor First Name</th>
+      <th>Professor Last Name</th>
       <th>Course Name</th>
     </tr>
   </thead>
@@ -61,8 +61,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$cid = $_POST['id'];
-$sql = "SELECT DISTINCT CourseName, ProfessorFirstName, ProfessorLastName FROM Course c JOIN Professor p ON c.ProfessorID=p.ProfessorID WHERE c.ProfessorID=" . $cid;
+$pid = $_POST['id'];
+$sql = "SELECT DISTINCT CourseName, ProfessorFirstName, ProfessorLastName, p.ProfessorID FROM Course c JOIN Professor p ON c.ProfessorID=p.ProfessorID WHERE c.ProfessorID=" . $pid;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
