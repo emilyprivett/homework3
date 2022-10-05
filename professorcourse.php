@@ -62,7 +62,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $cid = $_POST['id'];
-$sql = "SELECT CourseName, ProfessorFirstName, ProfessorLastName FROM Course c JOIN Professor p ON c.ProfessorID=p.ProfessorID WHERE c.ProfessorID=" . $cid;
+$sql = "SELECT DISTINCT CourseName, ProfessorFirstName, ProfessorLastName FROM Course c JOIN Professor p ON c.ProfessorID=p.ProfessorID WHERE c.ProfessorID=" . $cid;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
