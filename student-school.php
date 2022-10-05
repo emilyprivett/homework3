@@ -32,9 +32,6 @@
          <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="professorcourse.php">Professor & Course</a>
-      </li>
     </ul>
   </div>
 </nav>
