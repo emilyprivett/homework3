@@ -61,7 +61,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $pid = $_GET['id'];
-$sql = "SELECT StudentID, StudentFirstName, StudentLastName, SchoolID FROM Student st JOIN School sc ON st.SchoolID=sc.SchoolID WHERE sc.SchoolID=" . $pid;
+$sql = "SELECT StudentID, StudentFirstName, StudentLastName, SchoolID FROM Student st JOIN School sc ON st.SchoolID=sc.SchoolID WHERE sc.SchoolID=" .$pid;
     $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
