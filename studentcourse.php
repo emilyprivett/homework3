@@ -62,7 +62,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $cid = $_POST['id'];
-$sql = "SELECT DISTINCT CourseName, StudentFirstName, StudentLastName FROM Course c JOIN Student s ON c.CourseID=s.CourseID WHERE c.CourseID=" . $cid;
+$sql = "SELECT  CourseName, StudentFirstName, StudentLastName FROM Course c JOIN StudentCourse sc ON c.CourseID=sc.CourseID JOIN Student s ON sc.StudentID=s.StudentID WHERE c.CourseID=" . $cid;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -84,6 +84,6 @@ $conn->close();
   </tbody>
    </table>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
