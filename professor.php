@@ -67,7 +67,8 @@ if ($result->num_rows > 0) {
       <th>Professor ID</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Email Name</th>
+      <th>Email</th>
+      <th>Course Info</th>
     </tr>
   </thead>
   <tbody>
